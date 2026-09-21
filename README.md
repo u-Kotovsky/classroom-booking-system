@@ -1,1 +1,1 @@
-# classroom-booking-system
+# Бронирование учебных аудиторий
