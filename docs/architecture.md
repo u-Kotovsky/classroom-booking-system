@@ -5,10 +5,8 @@
 ```mermaid
 flowchart TD
     Client["Клиент (браузер / UI)"]
-
     subgraph Server["Серверное приложение (ASP.NET Core)"]
         ApiHost["ApiHost — HTTP API"]
-
         subgraph Modules["Функциональные модули"]
             Booking["BookingModule"]
             Classroom["ClassroomModule"]
@@ -22,6 +20,7 @@ flowchart TD
     ApiHost --> Classroom
     ApiHost --> User
 
-    Booking -->|проверка аудитории| Classroom
-    Booking -->|CheckAvailabilityAsync /<br/>ReserveSlotAsync| Schedule
-    Booking -->|получение пользователя| User
+    Booking -->|GetClassroomAsync| Classroom
+    Booking -->|CheckAvailabilityAsync /<br/>ReserveSlotAsync /<br/>ReleaseSlotAsync| Schedule
+    Booking -->|GetUserAsync| User
+```
