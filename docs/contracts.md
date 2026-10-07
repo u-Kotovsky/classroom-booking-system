@@ -104,7 +104,20 @@ public record ApproveBookingRequest(
 
 ---
 
-## 9.7. ScheduleSlotDto
+## 9.7. ReserveSlotRequest
+
+```csharp
+public record ReserveSlotRequest(
+    Guid BookingId,
+    Guid ClassroomId,
+    DateTime StartTime,
+    DateTime EndTime
+);
+```
+
+---
+
+## 9.8. ScheduleSlotDto
 
 ```csharp
 public record ScheduleSlotDto(
@@ -118,7 +131,7 @@ public record ScheduleSlotDto(
 
 ---
 
-## 9.8. UserDto
+## 9.9. UserDto
 
 ```csharp
 public record UserDto(
@@ -132,7 +145,7 @@ public record UserDto(
 ---
 
 # 11. Протокол взаимодействия № 1  
-## Резервирование игровой приставки
+## Проверка доступности аудитории и предотвращение конфликтов расписания
 
 ### 11.1. Инициатор и получатель
 
@@ -372,7 +385,6 @@ Task<ScheduleSlotDto> ReserveSlotAsync(
 
 ```json
 {
-  "success": false,
   "errorCode": "SLOT_ALREADY_RESERVED"
 }
 ```
