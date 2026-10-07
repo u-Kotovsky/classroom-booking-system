@@ -108,3 +108,30 @@ dotnet test
 Критерием успешного результата является отсутствие ошибок сборки и прохождение всех автоматических тестов.
 
 ---
+
+### 15.4. Обязательные проверки этапа 3
+
+Модульные тесты:
+
+- `ScheduleServiceTests.CheckAvailabilityAsync_WhenNoOverlap_ReturnsAvailable`
+- `ScheduleServiceTests.CheckAvailabilityAsync_WhenEndTimeBeforeStartTime_ReturnsInvalidTimeInterval`
+- `ScheduleServiceTests.CheckAvailabilityAsync_WhenSlotReserved_ReturnsScheduleConflict`
+
+Интеграционные тесты:
+
+- `BookingScheduleIntegrationTests.CreateBooking_WhenSlotFree_ReturnsPendingAndLogsSuccess`
+- `BookingScheduleIntegrationTests.CreateBooking_WhenSlotBusy_ReturnsScheduleConflictAndLogsWarning`
+- `BookingScheduleIntegrationTests.ApproveBooking_ReservesSlotAndChangesStatusToApproved`
+- `BookingScheduleIntegrationTests.CancelBooking_ReleasesSlotAndChangesStatusToCancelled`
+
+Требование к журналированию в тестах:
+
+Интеграционные тесты должны подтверждать наличие записей журнала со следующими контекстными полями:
+
+- `Operation`;
+- `Result`;
+- `BookingId`;
+- `ClassroomId`;
+- `StartTime`;
+- `EndTime`;
+- `ErrorCode` для отрицательных сценариев.
