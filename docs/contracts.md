@@ -104,7 +104,7 @@ public record ApproveBookingRequest(
 
 ---
 
-## 9.7. ApproveBookingRequest
+## 9.7. ReserveSlotRequest
 
 ```csharp
 public record ReserveSlotRequest(
