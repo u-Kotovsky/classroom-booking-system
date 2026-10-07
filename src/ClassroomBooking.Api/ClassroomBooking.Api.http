@@ -1,0 +1,6 @@
+@ClassroomBooking.Api_HostAddress = http://localhost:5286
+
+GET {{ClassroomBooking.Api_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
