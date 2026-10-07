@@ -72,16 +72,28 @@ dotnet run --project src/ClassroomBooking.Api
 ```
 classroom-booking-system/
 ├── src/
-│   ├── Domain/
-│   ├── Application/
-│   ├── Infrastructure/
-│   └── Web/
+│   ├── ClassroomBooking.Api/
+│   ├── ClassroomBooking.Classrooms/
+│   ├── ClassroomBooking.Bookings/
+│   ├── ClassroomBooking.Schedule/
+│   ├── ClassroomBooking.Users/
+│   └── ClassroomBooking.Contracts/
 ├── tests/
-│   ├── UnitTests/
-│   └── IntegrationTests/
+│   ├── ClassroomBooking.UnitTests/
+│   └── ClassroomBooking.IntegrationTests/
 ├── docs/
-│   └── stage-3-report.md
+│   ├── project-scope.md
+│   ├── modules.md
+│   ├── architecture.md
+│   ├── dependencies.md
+│   ├── contracts.md
+│   ├── testing.md
+│   ├── version-control.md
+│   └── decisions/
+│       ├── ADR-001-modular-architecture.md
+│       └── ADR-002-module-contracts.md
 ├── .gitignore
+├── .editorconfig
 ├── README.md
 └── ClassroomBooking.sln
 ```
