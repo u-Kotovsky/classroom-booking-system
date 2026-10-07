@@ -64,7 +64,7 @@ dotnet test
 
 ```bash
 dotnet restore
-dotnet run --project src/
+dotnet run --project src/ClassroomBooking.Api
 ```
 
 ### Структура репозитория
