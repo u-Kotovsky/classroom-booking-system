@@ -1,22 +1,19 @@
+using ClassroomBooking.Bookings;
+using ClassroomBooking.Contracts;
+using ClassroomBooking.Schedule;
+
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
-
+builder.Services.AddLogging();
 builder.Services.AddControllers();
-// Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
-builder.Services.AddOpenApi();
+
+builder.Services.AddSingleton<ScheduleService>();
+builder.Services.AddSingleton<IScheduleConflictService>(sp => sp.GetRequiredService<ScheduleService>());
+builder.Services.AddSingleton<IScheduleReservationService>(sp => sp.GetRequiredService<ScheduleService>());
+builder.Services.AddSingleton<IScheduleReleaseService>(sp => sp.GetRequiredService<ScheduleService>());
+builder.Services.AddSingleton<IBookingService, BookingService>();
 
 var app = builder.Build();
-
-// Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
-{
-    app.MapOpenApi();
-}
-
-app.UseHttpsRedirection();
-
-app.UseAuthorization();
 
 app.MapControllers();
 
