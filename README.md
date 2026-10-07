@@ -10,6 +10,10 @@
 
 - .NET 9 SDK
 - C#
+- ASP.NET Core
+- Entity Framework Core
+- SQLite
+- xUnit
 - Git
 - Markdown
 - dotnet CLI
