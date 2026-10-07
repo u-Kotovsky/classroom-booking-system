@@ -599,3 +599,80 @@ BookingModule
 При успешном освобождении слота `BookingModule` устанавливает статус заявки `Cancelled`.
 
 При ошибке `SLOT_NOT_RESERVED` модуль проверяет, не была ли заявка уже отменена ранее. Если слот не принадлежит данной заявке, операция завершается ошибкой.
+
+## 14. Интерфейсы служб контрактов
+
+### 14.1. Контракт проверки доступности расписания
+
+```csharp
+public interface IScheduleConflictService
+{
+    Task<CheckAvailabilityResult> CheckAvailabilityAsync(
+        CheckAvailabilityRequest request,
+        CancellationToken cancellationToken = default);
+}
+```
+
+### 14.2. Контракт резервирования временного слота
+
+```csharp
+public interface IScheduleReservationService
+{
+    Task<ScheduleSlotDto> ReserveSlotAsync(
+        ReserveSlotRequest request,
+        CancellationToken cancellationToken = default);
+}
+```
+
+### 14.3. Контракт освобождения временного слота
+
+```csharp
+public interface IScheduleReleaseService
+{
+    Task<ReleaseSlotResult> ReleaseSlotAsync(
+        ReleaseSlotRequest request,
+        CancellationToken cancellationToken = default);
+}
+```
+
+### 14.4. Контракт модуля бронирования
+
+```csharp
+public interface IBookingService
+{
+    Task<BookingDto> CreateBookingAsync(
+        CreateBookingRequest request,
+        CancellationToken cancellationToken = default);
+
+    Task<BookingDto> ApproveBookingAsync(
+        ApproveBookingRequest request,
+        CancellationToken cancellationToken = default);
+
+    Task<BookingDto> CancelBookingAsync(
+        Guid bookingId,
+        Guid userId,
+        bool isAdmin,
+        CancellationToken cancellationToken = default);
+}
+```
+
+### 14.5. Исключение контракта
+
+```csharp
+public sealed class ContractOperationException : Exception
+{
+    public string ErrorCode { get; }
+
+    public ContractOperationException(string errorCode)
+        : base(errorCode)
+    {
+        ErrorCode = errorCode;
+    }
+
+    public ContractOperationException(string errorCode, string message)
+        : base(message)
+    {
+        ErrorCode = errorCode;
+    }
+}
+```
