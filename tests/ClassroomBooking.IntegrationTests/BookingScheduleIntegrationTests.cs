@@ -1,3 +1,7 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 using ClassroomBooking.Bookings;
 using ClassroomBooking.Contracts;
 using ClassroomBooking.Schedule;
@@ -36,7 +40,12 @@ public class BookingScheduleIntegrationTests
         var endTime = startTime.AddHours(1);
 
         var firstBooking = await context.BookingService.CreateBookingAsync(
-            new CreateBookingRequest(Guid.NewGuid(), classroomId, startTime, endTime, "Первое занятие"));
+            new CreateBookingRequest(
+                Guid.NewGuid(),
+                classroomId,
+                startTime,
+                endTime,
+                "Первое занятие"));
 
         await context.BookingService.ApproveBookingAsync(
             new ApproveBookingRequest(firstBooking.Id, Guid.NewGuid()));
@@ -86,7 +95,12 @@ public class BookingScheduleIntegrationTests
         var endTime = startTime.AddHours(1);
 
         var booking = await context.BookingService.CreateBookingAsync(
-            new CreateBookingRequest(Guid.NewGuid(), classroomId, startTime, endTime, "Семинар"));
+            new CreateBookingRequest(
+                Guid.NewGuid(),
+                classroomId,
+                startTime,
+                endTime,
+                "Семинар"));
 
         await context.BookingService.ApproveBookingAsync(
             new ApproveBookingRequest(booking.Id, Guid.NewGuid()));
