@@ -15,6 +15,7 @@ graph TD
     Api --> Classrooms
     Api --> Schedule
     Api --> Users
+    Api --> Contracts
 
     Bookings --> Contracts
     Classrooms --> Contracts
@@ -22,13 +23,22 @@ graph TD
     Users --> Contracts
 ```
 
+Бизнес-модули не обращаются напрямую к внутренним классам друг друга.  
+Взаимодействие выполняется через публичные контракты:
+
+```text
+BookingModule → IScheduleConflictService → ScheduleModule
+```
+
 ## Внешние зависимости
 
 | Зависимость | Назначение |
-| --- | --- |
+|-------------|------------|
 | .NET 9 | Платформа выполнения |
 | ASP.NET Core | Разработка серверного API |
 | Entity Framework Core | Доступ к данным |
 | SQLite | Хранение данных в учебной версии проекта |
 | xUnit | Модульное тестирование |
 | Git | Контроль версий |
+
+Конкретные версии библиотек фиксируются в файлах проектов (`.csproj`).
