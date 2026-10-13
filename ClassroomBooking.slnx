@@ -7,4 +7,8 @@
     <Project Path="src/ClassroomBooking.Schedule/ClassroomBooking.Schedule.csproj" />
     <Project Path="src/ClassroomBooking.Users/ClassroomBooking.Users.csproj" />
   </Folder>
+  <Folder Name="/tests/">
+    <Project Path="tests/ClassroomBooking.IntegrationTests/ClassroomBooking.IntegrationTests.csproj" />
+    <Project Path="tests/ClassroomBooking.UnitTests/ClassroomBooking.UnitTests.csproj" />
+  </Folder>
 </Solution>
