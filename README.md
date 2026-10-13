@@ -2,9 +2,7 @@
 
 Учебный курсовой проект по разработке информационной системы для бронирования учебных аудиторий.
 
-Проект выполнен с использованием стека **C# / .NET 9** и системы контроля версий **Git**.
-
----
+Проект выполнен с использованием стека C# / .NET 9 и системы контроля версий Git.
 
 ## Технологии
 
@@ -18,9 +16,7 @@
 - Markdown
 - dotnet CLI
 
----
-
-### Требования
+## Требования
 
 Для работы с проектом необходимо установить следующее программное обеспечение:
 
@@ -28,9 +24,7 @@
 - [Visual Studio](https://visualstudio.microsoft.com/downloads/) (версии 2022 или новее)
 - Git
 
----
-
-### Клонирование репозитория
+## Клонирование репозитория
 
 После установки всех требований необходимо клонировать локальную копию репозитория:
 
@@ -38,7 +32,7 @@
 git clone https://github.com/u-Kotovsky/classroom-booking-system.git
 ```
 
-### Сборка
+## Сборка
 
 Для восстановления зависимостей и сборки проекта выполните команды:
 
@@ -49,9 +43,7 @@ dotnet build
 
 Успешная сборка означает, что все проекты решения корректно скомпилированы и зависимости восстановлены.
 
----
-
-### Тесты
+## Тесты
 
 Для запуска тестов выполните:
 
@@ -62,7 +54,7 @@ dotnet test
 
 Тесты позволяют проверить корректность работы модулей проекта и основные сценарии использования системы.
 
-### Запуск
+## Запуск
 
 Для запуска приложения выполните команду:
 
@@ -71,33 +63,36 @@ dotnet restore
 dotnet run --project src/ClassroomBooking.Api
 ```
 
-### Структура репозитория
+## Структура репозитория
 
-```
+```text
 classroom-booking-system/
-├── src/
-│   ├── ClassroomBooking.Api/
-│   ├── ClassroomBooking.Classrooms/
-│   ├── ClassroomBooking.Bookings/
-│   ├── ClassroomBooking.Schedule/
-│   ├── ClassroomBooking.Users/
-│   └── ClassroomBooking.Contracts/
-├── tests/
-│   ├── ClassroomBooking.UnitTests/
-│   └── ClassroomBooking.IntegrationTests/
-├── docs/
-│   ├── project-scope.md
-│   ├── modules.md
-│   ├── architecture.md
-│   ├── dependencies.md
-│   ├── contracts.md
-│   ├── testing.md
-│   ├── version-control.md
-│   └── decisions/
-│       ├── ADR-001-modular-architecture.md
-│       └── ADR-002-module-contracts.md
-├── .gitignore
-├── .editorconfig
-├── README.md
-└── ClassroomBooking.sln
+ ├── src/
+ │   ├── ClassroomBooking.Api/
+ │   ├── ClassroomBooking.Classrooms/
+ │   ├── ClassroomBooking.Bookings/
+ │   ├── ClassroomBooking.Schedule/
+ │   ├── ClassroomBooking.Users/
+ │   └── ClassroomBooking.Contracts/
+ ├── tests/
+ │   ├── ClassroomBooking.UnitTests/
+ │   └── ClassroomBooking.IntegrationTests/
+ ├── docs/
+ │   ├── project-scope.md
+ │   ├── modules.md
+ │   ├── architecture.md
+ │   ├── dependencies.md
+ │   ├── contracts.md
+ │   ├── testing.md
+ │   ├── logging.md
+ │   ├── version-control.md
+ │   ├── evidence/
+ │   └── decisions/
+ │       ├── ADR-001-modular-architecture.md
+ │       └── ADR-002-module-contracts.md
+ ├── .gitignore
+ ├── .editorconfig
+ ├── .gitattributes
+ ├── README.md
+ └── ClassroomBooking.sln
 ```
