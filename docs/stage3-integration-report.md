@@ -176,11 +176,21 @@ dotnet test
 Фактический вывод команд вставляется после выполнения проверки:
 
 ```text
-Вставить вывод dotnet build
+Восстановление завершено (4,2 с)
+  ClassroomBooking.Contracts net9.0 успешно выполнено (3,2 с) → src\ClassroomBooking.Contracts\bin\Debug\net9.0\ClassroomBooking.Contracts.dll
+  ClassroomBooking.Classrooms net9.0 успешно выполнено (0,5 с) → src\ClassroomBooking.Classrooms\bin\Debug\net9.0\ClassroomBooking.Classrooms.dll
+  ClassroomBooking.Users net9.0 успешно выполнено (0,6 с) → src\ClassroomBooking.Users\bin\Debug\net9.0\ClassroomBooking.Users.dll
+  ClassroomBooking.Schedule net9.0 успешно выполнено (0,8 с) → src\ClassroomBooking.Schedule\bin\Debug\net9.0\ClassroomBooking.Schedule.dll
+  ClassroomBooking.Bookings net9.0 успешно выполнено (0,8 с) → src\ClassroomBooking.Bookings\bin\Debug\net9.0\ClassroomBooking.Bookings.dll
+  ClassroomBooking.Api net9.0 успешно выполнено (1,8 с) → src\ClassroomBooking.Api\bin\Debug\net9.0\ClassroomBooking.Api.dll
+
+Сборка успешно выполнено через 10,4 с
 ```
 
 ```text
-Вставить вывод dotnet test
+Восстановление завершено (0,7 с)
+
+Сборка успешно выполнено через 1,1 с
 ```
 
 ## 9. Найденные интеграционные проблемы и способ устранения
