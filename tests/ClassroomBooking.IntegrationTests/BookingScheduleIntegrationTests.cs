@@ -22,7 +22,7 @@ public class BookingScheduleIntegrationTests
             Guid.NewGuid(),
             DateTime.UtcNow,
             DateTime.UtcNow.AddHours(1),
-            "Учебное занятие");
+            "РЈС‡РµР±РЅРѕРµ Р·Р°РЅСЏС‚РёРµ");
 
         var booking = await context.BookingService.CreateBookingAsync(request);
 
@@ -45,7 +45,7 @@ public class BookingScheduleIntegrationTests
                 classroomId,
                 startTime,
                 endTime,
-                "Первое занятие"));
+                "РџРµСЂРІРѕРµ Р·Р°РЅСЏС‚РёРµ"));
 
         await context.BookingService.ApproveBookingAsync(
             new ApproveBookingRequest(firstBooking.Id, Guid.NewGuid()));
@@ -57,7 +57,7 @@ public class BookingScheduleIntegrationTests
                     classroomId,
                     startTime.AddMinutes(30),
                     endTime.AddMinutes(30),
-                    "Второе занятие")));
+                    "Р’С‚РѕСЂРѕРµ Р·Р°РЅСЏС‚РёРµ")));
 
         Assert.Equal("SCHEDULE_CONFLICT", exception.ErrorCode);
         Assert.True(HasLog(context.Provider, LogLevel.Warning, "CheckAvailability", "Rejected", "SCHEDULE_CONFLICT"));
@@ -75,7 +75,7 @@ public class BookingScheduleIntegrationTests
                 Guid.NewGuid(),
                 DateTime.UtcNow,
                 DateTime.UtcNow.AddHours(1),
-                "Лабораторная работа"));
+                "Р›Р°Р±РѕСЂР°С‚РѕСЂРЅР°СЏ СЂР°Р±РѕС‚Р°"));
 
         var approved = await context.BookingService.ApproveBookingAsync(
             new ApproveBookingRequest(booking.Id, Guid.NewGuid()));
@@ -100,7 +100,7 @@ public class BookingScheduleIntegrationTests
                 classroomId,
                 startTime,
                 endTime,
-                "Семинар"));
+                "РЎРµРјРёРЅР°СЂ"));
 
         await context.BookingService.ApproveBookingAsync(
             new ApproveBookingRequest(booking.Id, Guid.NewGuid()));
