@@ -1,4 +1,4 @@
-﻿using ClassroomBooking.Contracts;
+using ClassroomBooking.Contracts;
 using ClassroomBooking.Schedule;
 using Microsoft.Extensions.Logging.Abstractions;
 using Xunit;
