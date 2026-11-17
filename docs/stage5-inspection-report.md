@@ -1,3 +1,93 @@
+# Отчёт по этапу 5. Инспекция кода модулей проекта
+
+## 1. Исходное состояние
+
+Перед началом этапа зафиксировано состояние репозитория:
+
+```bash
+git status
+git rev-parse --short HEAD
+```
+
+Рабочая ветка: `feature/stage5-bookings-controller`.
+Базовая revision: `b6f01ca`, рабочее дерево чистое.
+Инспекция и устранение замечаний выполнялись в этой же ветке отдельными коммитами (§5).
+
+---
+
+## 2. Объект и объём инспекции
+
+| Область | Файлы |
+| --- | --- |
+| API | `src/ClassroomBooking.Api/Program.cs`, `Controllers/BookingsController.cs` |
+| BookingModule | `src/ClassroomBooking.Bookings/BookingService.cs` |
+| ScheduleModule | `src/ClassroomBooking.Schedule/ScheduleService.cs` |
+| Контракты | `Contracts/Dtos.cs`, `Contracts/Interfaces.cs`, `Contracts/ContractOperationException.cs` |
+| Тесты | `UnitTests/ScheduleServiceTests.cs`, `IntegrationTests/BookingScheduleIntegrationTests.cs`, `IntegrationTests/CaptureLoggerProvider.cs` |
+| Служебные файлы | `.editorconfig`, `.gitattributes`, `.gitignore`, `ClassroomBooking.slnx`, `README.md` |
+| Документация | `docs/contracts.md`, `modules.md`, `dependencies.md`, `logging.md`, `testing.md`, `version-control.md` |
+
+Объём: 8 проектов решения, 10 файлов C#, 7 автоматических тестов.
+Модули `ClassroomBooking.Classrooms` и `ClassroomBooking.Users` содержат только файлы проектов — код не реализован, по ним проверены ссылки и контракты.
+Вне объёма инспекции: персистентность (EF Core/SQLite), аутентификация, клиентское приложение — не реализованы.
+
+---
+
+## 3. Методика инспекции
+
+1. Формализованный перечень из 14 критериев задания этапа 5; результаты — §7.
+2. Ручное чтение кода по схеме «место — наблюдение — риск — рекомендация — статус»; результаты — §6.
+3. Сверка реализации с артефактами этапа 1: `docs/contracts.md` (§9 DTO, §10 API, §11–13 протоколы, §14 интерфейсы), `docs/modules.md`, `docs/dependencies.md`, `docs/logging.md`.
+4. Инструментальная проверка: `dotnet format --verify-no-changes`, `dotnet build`, `dotnet test`; результаты — §4.
+5. Проверка репозитория: `git ls-files` (отсутствие `bin`, `obj`, `.vs`), `git log` (прослеживаемость).
+6. Статусы замечаний: «Подтверждено» — требование выполнено; «Устранено» — исправлено в ходе этапа; «Открыто» — зафиксировано как риск развития (§9).
+7. Доказательства сохраняются в `docs/evidence/` в UTF-8, вывод dotnet принудительно англоязычный (`DOTNET_CLI_UI_LANGUAGE=en`) — профилактика повторения дефекта 1 этапа 4.
+
+---
+
+## 4. Результаты инструментальной проверки
+
+| Команда | Результат | Файл доказательства |
+| --- | --- | --- |
+| `dotnet --version` | версия SDK зафиксирована | `stage5-dotnet-version.txt` |
+| `dotnet format --verify-no-changes` | замечаний нет, `exit code: 0` | `stage5-format-output.txt` |
+| `dotnet build` | `Build succeeded`, 0 предупреждений, 0 ошибок, `exit code: 0` | `stage5-build-output.txt` |
+| `dotnet test tests/ClassroomBooking.UnitTests` | пройдено 3 из 3 | `stage5-test-output.txt` |
+| `dotnet test tests/ClassroomBooking.IntegrationTests` | пройдено 4 из 4 | `stage5-test-output.txt` |
+| `git ls-files` | `bin`, `obj`, `.vs` не отслеживаются | `stage5-git-ls-files.txt` |
+
+Ключевые строки файла сборки:
+
+```text
+Build succeeded.
+    0 Warning(s)
+    0 Error(s)
+Time Elapsed 00:00:05.78
+exit code: 0
+```
+
+Ключевые строки файла тестирования:
+
+```text
+Passed!  - Failed:     0, Passed:     3, Skipped:     0, Total:     3, Duration: 93 ms - ClassroomBooking.UnitTests.dll (net9.0)
+Passed!  - Failed:     0, Passed:     4, Skipped:     0, Total:     4, Duration: 38 ms - ClassroomBooking.IntegrationTests.dll (net9.0)
+exit code: 0
+```
+
+Итоговый результат:
+
+```text
+Всего тестов: 7
+Успешно: 7
+Сбой: 0
+Пропущено: 0
+```
+
+Проверки выполнены после унификации версий пакетов журналирования (`9.0.4` во всех проектах, коммит `c41dda4`).
+Значения времени выполнения приведены из файлов доказательств и обновляются при повторном запуске (шаг 9).
+
+---
+
 ## 5. История коммитов рабочей ветки
 
 В ветке `feature/stage5-bookings-controller` выполнено десять коммитов:
@@ -42,6 +132,55 @@ git log main..feature/stage5-bookings-controller --oneline
 | `.gitattributes` | `merge=union` для `.csproj`/`.sln` | Средний: тихое дублирование элементов XML | Union отключён | Устранено |
 | Версии пакетов журналирования | Все проекты на `9.0.4` | Низкий | - | Устранено |
 | Служебные файлы Git | `bin`, `obj`, `.vs` не отслеживаются | Низкий | Подтверждено `git ls-files` | Подтверждено |
+
+---
+
+## 7. Самопроверка по критериям задания
+
+| № | Критерий | Наблюдение | Результат |
+| --- | --- | --- | --- |
+| 1 | Понятность имён | Имена методов и полей отражают назначение (`CheckAvailabilityAsync`, `Overlaps`, `_bookingSlotMap`). Замечание: `_releasedBookings` — словарь, используемый как множество | Соответствует, замечание низкое |
+| 2 | Ответственность классов и методов | `ScheduleService` совмещает три контракта и хранение состояния; `BookingService` — бизнес-логику и хранение; маппинг ошибок вынесен в `MapStatus` | Допустимо для учебного модуля, замечание среднее |
+| 3 | Направление зависимостей | Api → Bookings/Schedule/Contracts; Bookings → Contracts; Schedule → Contracts. Перекрёстных и обратных ссылок нет | Соответствует `docs/dependencies.md` |
+| 4 | Дублирование логики | Проверка `EndTime <= StartTime` в 4 методах; одинаковый `try/catch` в 3 действиях контроллера; повторяющиеся шаблоны журнала | Замечание среднее |
+| 5 | Обработка `null` | `Nullable enable` во всех проектах; `availability.ErrorCode ?? "SCHEDULE_CONFLICT"`. Замечание: `releaseResult.ErrorCode!` без проверки | Частично, замечание среднее |
+| 6 | Валидация входных данных | Проверяется только корректность интервала; `Guid.Empty`, пустой `Purpose`, интервалы в прошлом не проверяются | Частично, открыто |
+| 7 | Обработка исключений | `ContractOperationException` с `ErrorCode`, маппинг в HTTP-коды. Неизвестный код → 400; обработчика непредвиденных исключений нет; `ReserveSlotAsync` бросает исключение, а `CheckAvailability`/`ReleaseSlot` возвращают результат — стиль ошибок не единообразен | Частично, открыто |
+| 8 | Использование `CancellationToken` | Токен принимается и передаётся по цепочке, но нигде не проверяется; методы `ScheduleService` синхронные (`Task.FromResult`) | Не соблюдается, открыто |
+| 9 | Конфигурация и секреты | `appsettings*.json` — только `Logging` и `AllowedHosts`; секретов нет; `*.env`, `*.pfx` игнорируются | Соответствует |
+| 10 | Корректность внешних контрактов | 11 DTO и 4 интерфейса совпадают с `docs/contracts.md` §9, §14. Расхождения: 3 эндпоинта из 10; `MapOpenApi` не вызван; `CLASSROOM_UNAVAILABLE` не отображён в HTTP-код; `isAdmin`/`AdminId` задаются клиентом вопреки §12.10, §13.10 | Частично, открыто (высокий риск) |
+| 11 | Наличие тестов | 7 тестов: свободный интервал, некорректный интервал, конфликт, создание, подтверждение, отмена, журналирование. Не покрыты `FORBIDDEN`, `BOOKING_NOT_FOUND`, `INVALID_BOOKING_STATUS`, идемпотентность освобождения, HTTP-уровень, параллельные запросы | Частично |
+| 12 | Мёртвый и закомментированный код | Закомментированного кода нет; шаблонный `UnitTest1.cs` удалён на этапе 4. Не используются: `ScheduleSlot.BookingId` при проверке конфликтов, статусы слота `Pending`/`Blocked`, `ClassroomDto`/`UserDto` (задел на развитие) | Соответствует, замечание низкое |
+| 13 | Соответствие `.editorconfig` | `dotnet format --verify-no-changes` — `exit code: 0`; правила приведены в соответствие коду, заданы кодировка и переводы строк | Соответствует |
+| 14 | Предупреждения компилятора | `0 Warning(s)`, `0 Error(s)`; `CA1000` включён как warning, не срабатывает | Соответствует |
+
+---
+
+## 8. Ответы на контрольные вопросы
+
+**1. Какой результат этапа можно независимо проверить?**
+Отчёт `docs/stage5-inspection-report.md` с таблицей замечаний (§6) и самопроверкой (§7), файлы доказательств `docs/evidence/stage5-*.txt`, история ветки (§5) и тег `stage5/checkpoint`.
+
+**2. Какие артефакты созданы или обновлены?**
+Отчёт этапа 5; `.editorconfig`; `.gitattributes`; `README.md`; версии пакетов в двух `.csproj` тестов; файлы доказательств этапа 5; отчёт этапа 4 (уточнение ссылки на доказательство тестирования).
+
+**3. Какими командами подтверждён результат?**
+`dotnet format --verify-no-changes` (0), `dotnet build` (0 предупреждений и ошибок), `dotnet test` (7/7), `git ls-files`, `git log b6f01ca..HEAD --oneline`.
+
+**4. Какие интеграционные риски уменьшены?**
+Повторение порчи кодировки (правила `charset`/`end_of_line` и доказательства в UTF-8); некорректное автослияние проектов (`merge=union` отключён); непокрытые атрибутами `.slnx` и `.http`; разнобой версий пакетов журналирования; расхождение отчёта с фактической историей коммитов.
+
+**5. Какие изменения потребуют обновления артефактов этапа?**
+Реализация `Classrooms`/`Users`, переход на EF Core/SQLite, введение аутентификации, реализация остальных эндпоинтов и публикация OpenAPI, изменение DTO → `docs/contracts.md`, `docs/dependencies.md`, `docs/testing.md`, `docs/modules.md` и повторная инспекция.
+
+**6. Как по истории Git определить выполненные действия?**
+`git log b6f01ca..feature/stage5-bookings-controller --oneline` и таблица §5; префиксы `feat:`/`fix:`/`docs:`/`chore:` по `docs/version-control.md`; контрольное состояние — аннотированный тег `stage5/checkpoint`.
+
+**7. Какие ошибки найдены при самопроверке?**
+Разнобой версий пакетов журналирования (`9.0.4` и `10.0.12`); нечитаемые файлы доказательств (UTF-16 и mojibake); пропущенный коммит `4f3b016` в §5; отсутствие префикса `chore:` в строке таблицы при наличии его в коммите; `README.md` ссылался на `.sln` вместо `.slnx`; правило `dotnet_style_qualification_for_method = true` при отсутствии `this.` в коде; отсутствие разделов 1–4 и 7–8 отчёта.
+
+**8. Что необходимо другому разработчику для повторения результата?**
+.NET SDK 9.0.200+ (фактическая версия — `stage5-dotnet-version.txt`), Git, PowerShell с UTF-8 (`chcp 65001`, `[Console]::OutputEncoding`, `DOTNET_CLI_UI_LANGUAGE=en`), клон репозитория, `dotnet restore`, `dotnet build`, `dotnet test`, `dotnet format --verify-no-changes`; инструкции — `README.md`, правила — `docs/version-control.md`.
 
 ---
 
