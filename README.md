@@ -20,8 +20,8 @@
 
 Для работы с проектом необходимо установить следующее программное обеспечение:
 
-- [.NET 9 SDK](https://dotnet.microsoft.com/download/dotnet)
-- [Visual Studio](https://visualstudio.microsoft.com/downloads/) (версии 2022 или новее)
+- [.NET SDK 9.0.200+](https://dotnet.microsoft.com/download/dotnet)
+- [VS 2022 17.13+](https://visualstudio.microsoft.com/downloads/)
 - Git
 
 ## Клонирование репозитория
@@ -94,5 +94,5 @@ classroom-booking-system/
  ├── .editorconfig
  ├── .gitattributes
  ├── README.md
- └── ClassroomBooking.sln
+ └── ClassroomBooking.slnx
 ```
