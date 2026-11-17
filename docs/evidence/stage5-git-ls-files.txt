@@ -13,7 +13,9 @@ docs/evidence/stage1-build-output.txt
 docs/evidence/stage3-build-output.txt
 docs/evidence/stage3-test-output.txt
 docs/evidence/stage4-build-output.txt
+docs/evidence/stage4-test-output-recheck.txt
 docs/evidence/stage5-build-output.txt
+docs/evidence/stage5-dotnet-version.txt
 docs/evidence/stage5-format-output.txt
 docs/evidence/stage5-git-ls-files.txt
 docs/evidence/stage5-test-output.txt

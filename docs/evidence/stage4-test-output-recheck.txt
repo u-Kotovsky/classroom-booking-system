@@ -1,5 +1,5 @@
-﻿овторная проверка тестов этапа 4. Revision: bbe294f. ата: 2026-11-17T11:05:10
-сходный вывод этапа 4 не был сохранён; это повторный запуск, а не историческое доказательство.
+﻿Recheck of stage 4 tests. Revision: bbe294f. Date: 2026-11-17T11:05:10
+Original stage 4 output was not saved; this is a re-run, not historical evidence.
   Determining projects to restore...
   All projects are up-to-date for restore.
   ClassroomBooking.Contracts -> C:\Users\Student\Desktop\Левченко Дмитрий\курс 4 2026-2027\МДК 02.02 (Курсовой проект)\classroom-booking-system\src\ClassroomBooking.Contracts\bin\Debug\net9.0\ClassroomBooking.Contracts.dll

@@ -1,1 +1,2 @@
-﻿exit code: 0
+﻿> dotnet format --verify-no-changes
+exit code: 0
