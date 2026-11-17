@@ -1,22 +1,57 @@
-# Remove the line below if you want to inherit .editorconfig settings from higher directories
 root = true
 
-# C# files
-[*.cs]
-
-#### Core EditorConfig Options ####
-
-# Indentation and spacing
-indent_size = 4
+[*]
+charset = utf-8
+end_of_line = lf
+insert_final_newline = true
+trim_trailing_whitespace = true
 indent_style = space
+indent_size = 4
+
+# Markdown: два завершающих пробела — значимый перенос строки
+[*.md]
+trim_trailing_whitespace = false
+
+[*.{json,yml,yaml,xml}]
+indent_size = 2
+
+# VS сохраняет файлы проектов с BOM — не создаём шумных diff
+[*.{csproj,props,targets,slnx}]
+indent_size = 2
+charset = utf-8-bom
+
+[*.{bat,cmd,ps1}]
+end_of_line = crlf
+
+# Файлы доказательств: PowerShell пишет UTF-8 с BOM, вывод команд сохраняется дословно
+[docs/evidence/*.txt]
+charset = utf-8-bom
+trim_trailing_whitespace = false
+
+[*.cs]
+indent_size = 4
 tab_width = 4
 
 #### .NET Coding Conventions ####
+# В проекте this. не используется — правило приведено в соответствие с кодом
+dotnet_style_qualification_for_field = false:suggestion
+dotnet_style_qualification_for_property = false:suggestion
+dotnet_style_qualification_for_method = false:suggestion
+dotnet_style_qualification_for_event = false:suggestion
 
-# this. and Me. preferences
-dotnet_style_qualification_for_method = true
+dotnet_style_predefined_type_for_locals_parameters_members = true:suggestion
+dotnet_style_predefined_type_for_member_access = true:suggestion
+csharp_style_var_when_type_is_apparent = true:suggestion
+csharp_prefer_braces = true:suggestion
+
+#### Formatting ####
+dotnet_sort_system_directives_first = true
+csharp_using_directive_placement = outside_namespace:suggestion
+csharp_new_line_before_open_brace = all
+csharp_new_line_before_else = true
+csharp_new_line_before_catch = true
+csharp_new_line_before_finally = true
 
 #### Diagnostic configuration ####
-
 # CA1000: Do not declare static members on generic types
 dotnet_diagnostic.CA1000.severity = warning

@@ -1,20 +1,39 @@
+# В репозитории — LF, в рабочей копии — по правилам ниже
 * text=auto eol=lf
 
-*.cs text diff=csharp
-*.csproj text merge=union
-*.sln text merge=union
+# C# и проекты
+*.cs text diff=csharp eol=lf
+*.csproj text eol=lf
+*.props text eol=lf
+*.targets text eol=lf
+*.slnx text eol=lf
+*.http text eol=lf
 
-*.md text
-*.json text
-*.yml text
-*.yaml text
+# Документация, конфигурация, доказательства
+*.md text eol=lf
+*.json text eol=lf
+*.yml text eol=lf
+*.yaml text eol=lf
+*.txt text eol=lf
 
+# Скрипты
+*.bat text eol=crlf
+*.cmd text eol=crlf
+*.ps1 text eol=crlf
+*.sh text eol=lf
+
+# Двоичные файлы
 *.png binary
 *.jpg binary
 *.jpeg binary
 *.gif binary
 *.ico binary
-
 *.dll binary
 *.exe binary
 *.pdb binary
+*.nupkg binary
+*.snupkg binary
+*.zip binary
+*.pdf binary
+*.db binary
+*.sqlite binary

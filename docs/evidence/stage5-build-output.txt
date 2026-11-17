@@ -1,0 +1,18 @@
+﻿> dotnet build
+  Determining projects to restore...
+  All projects are up-to-date for restore.
+  ClassroomBooking.Contracts -> C:\Users\Student\Desktop\Левченко Дмитрий\курс 4 2026-2027\МДК 02.02 (Курсовой проект)\classroom-booking-system\src\ClassroomBooking.Contracts\bin\Debug\net9.0\ClassroomBooking.Contracts.dll
+  ClassroomBooking.Bookings -> C:\Users\Student\Desktop\Левченко Дмитрий\курс 4 2026-2027\МДК 02.02 (Курсовой проект)\classroom-booking-system\src\ClassroomBooking.Bookings\bin\Debug\net9.0\ClassroomBooking.Bookings.dll
+  ClassroomBooking.Classrooms -> C:\Users\Student\Desktop\Левченко Дмитрий\курс 4 2026-2027\МДК 02.02 (Курсовой проект)\classroom-booking-system\src\ClassroomBooking.Classrooms\bin\Debug\net9.0\ClassroomBooking.Classrooms.dll
+  ClassroomBooking.Users -> C:\Users\Student\Desktop\Левченко Дмитрий\курс 4 2026-2027\МДК 02.02 (Курсовой проект)\classroom-booking-system\src\ClassroomBooking.Users\bin\Debug\net9.0\ClassroomBooking.Users.dll
+  ClassroomBooking.Schedule -> C:\Users\Student\Desktop\Левченко Дмитрий\курс 4 2026-2027\МДК 02.02 (Курсовой проект)\classroom-booking-system\src\ClassroomBooking.Schedule\bin\Debug\net9.0\ClassroomBooking.Schedule.dll
+  ClassroomBooking.IntegrationTests -> C:\Users\Student\Desktop\Левченко Дмитрий\курс 4 2026-2027\МДК 02.02 (Курсовой проект)\classroom-booking-system\tests\ClassroomBooking.IntegrationTests\bin\Debug\net9.0\ClassroomBooking.IntegrationTests.dll
+  ClassroomBooking.UnitTests -> C:\Users\Student\Desktop\Левченко Дмитрий\курс 4 2026-2027\МДК 02.02 (Курсовой проект)\classroom-booking-system\tests\ClassroomBooking.UnitTests\bin\Debug\net9.0\ClassroomBooking.UnitTests.dll
+  ClassroomBooking.Api -> C:\Users\Student\Desktop\Левченко Дмитрий\курс 4 2026-2027\МДК 02.02 (Курсовой проект)\classroom-booking-system\src\ClassroomBooking.Api\bin\Debug\net9.0\ClassroomBooking.Api.dll
+
+Build succeeded.
+    0 Warning(s)
+    0 Error(s)
+
+Time Elapsed 00:00:03.61
+exit code: 0
