@@ -23,6 +23,11 @@ charset = utf-8-bom
 [*.{bat,cmd,ps1}]
 end_of_line = crlf
 
+# Файлы доказательств: PowerShell пишет UTF-8 с BOM, вывод команд сохраняется дословно
+[docs/evidence/*.txt]
+charset = utf-8-bom
+trim_trailing_whitespace = false
+
 [*.cs]
 indent_size = 4
 tab_width = 4
