@@ -9,12 +9,12 @@ VSTest version 18.0.2 (x64)
 Starting test execution, please wait...
 A total of 1 test files matched the specified pattern.
 
-Passed!  - Failed:     0, Passed:     3, Skipped:     0, Total:     3, Duration: 14 ms - ClassroomBooking.UnitTests.dll (net9.0)
+Passed!  - Failed:     0, Passed:     3, Skipped:     0, Total:     3, Duration: 93 ms - ClassroomBooking.UnitTests.dll (net9.0)
   Determining projects to restore...
   All projects are up-to-date for restore.
   ClassroomBooking.Contracts -> C:\Users\Student\Desktop\Левченко Дмитрий\курс 4 2026-2027\МДК 02.02 (Курсовой проект)\classroom-booking-system\src\ClassroomBooking.Contracts\bin\Debug\net9.0\ClassroomBooking.Contracts.dll
-  ClassroomBooking.Bookings -> C:\Users\Student\Desktop\Левченко Дмитрий\курс 4 2026-2027\МДК 02.02 (Курсовой проект)\classroom-booking-system\src\ClassroomBooking.Bookings\bin\Debug\net9.0\ClassroomBooking.Bookings.dll
   ClassroomBooking.Schedule -> C:\Users\Student\Desktop\Левченко Дмитрий\курс 4 2026-2027\МДК 02.02 (Курсовой проект)\classroom-booking-system\src\ClassroomBooking.Schedule\bin\Debug\net9.0\ClassroomBooking.Schedule.dll
+  ClassroomBooking.Bookings -> C:\Users\Student\Desktop\Левченко Дмитрий\курс 4 2026-2027\МДК 02.02 (Курсовой проект)\classroom-booking-system\src\ClassroomBooking.Bookings\bin\Debug\net9.0\ClassroomBooking.Bookings.dll
   ClassroomBooking.IntegrationTests -> C:\Users\Student\Desktop\Левченко Дмитрий\курс 4 2026-2027\МДК 02.02 (Курсовой проект)\classroom-booking-system\tests\ClassroomBooking.IntegrationTests\bin\Debug\net9.0\ClassroomBooking.IntegrationTests.dll
 Test run for C:\Users\Student\Desktop\Левченко Дмитрий\курс 4 2026-2027\МДК 02.02 %28Курсовой проект%29\classroom-booking-system\tests\ClassroomBooking.IntegrationTests\bin\Debug\net9.0\ClassroomBooking.IntegrationTests.dll (.NETCoreApp,Version=v9.0)
 VSTest version 18.0.2 (x64)
@@ -22,5 +22,5 @@ VSTest version 18.0.2 (x64)
 Starting test execution, please wait...
 A total of 1 test files matched the specified pattern.
 
-Passed!  - Failed:     0, Passed:     4, Skipped:     0, Total:     4, Duration: 34 ms - ClassroomBooking.IntegrationTests.dll (net9.0)
+Passed!  - Failed:     0, Passed:     4, Skipped:     0, Total:     4, Duration: 38 ms - ClassroomBooking.IntegrationTests.dll (net9.0)
 exit code: 0
